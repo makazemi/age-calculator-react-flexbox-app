@@ -86,7 +86,7 @@ function App() {
     // Adjust for leap years
     if (
       formData.year % 400 === 0 ||
-      (formData.year % 100 !== 0 && formData.year % 4 == 0)
+      (formData.year % 100 !== 0 && formData.year % 4 === 0)
     )
       monthLength[1] = 29;
 
@@ -114,18 +114,21 @@ function App() {
 
 
     var yearAge = currentYear - formData.year;
+    var monthAge=0
 
     if (currentMonth >= formData.month)
-      var monthAge = currentMonth - formData.month;
+       monthAge = currentMonth - formData.month;
     else {
       yearAge--;
-      var monthAge = 12 + currentMonth - formData.month;
+       monthAge = 12 + currentMonth - formData.month;
     }
 
-    if (currentDate >= formData.day) var dateAge = currentDate - formData.day;
+    var dateAge=0
+    if (currentDate >= formData.day) 
+         dateAge = currentDate - formData.day;
     else {
       monthAge--;
-      var dateAge = 31 + currentDate - formData.day;
+      dateAge = 31 + currentDate - formData.day;
 
       if (monthAge < 0) {
         monthAge = 11;
